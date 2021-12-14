@@ -1,0 +1,9 @@
+.canvas__progress-bar {
+  height: 6px;
+}
+
+.canvas__progress-indicator {
+  height: 6px;
+  background: linear-gradient(to right, orange, red);
+  transition: width 2s;
+}

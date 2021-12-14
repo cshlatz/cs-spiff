@@ -1,0 +1,25 @@
+$spiff-color: #1dc0a6; // Thank you, GIMP color picker
+
+.canvas__button {
+  border-color: $spiff-color;
+  border-radius: 25px;
+  color: $spiff-color;
+  font-weight: bold;
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  height: 40px; // Downloaded the image into GIMP and measured it there, hope it's right
+  width: 162px;
+
+  &.canvas__button--inactive {
+    border: 1px solid;
+  }
+
+  &.canvas__button--active {
+    border: 3px solid;
+  }
+
+  &:hover {
+    border: 2px solid;
+  }
+}
