@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Exercise from "../exercise/Exercise";
 
 import Button from "./Button";
 import ProgressBar from "./ProgressBar";
 import { RequestStatus } from "./request-status";
 import useInterval from "./hooks/useInterval";
+import './ProgressBarExercise.scss';
 
 const ProgressBarExercise = () => {
   return (
@@ -28,6 +29,7 @@ const Solution = () => {
   const [timer, setTimer] = useState(null);
   const [progressBarFadeTimer, setProgressBarFadeTimer] = useState(null);
   const [delay, setDelay] = useState(null);
+  const [useBreakpoints, setUseBreakpoints] = useState(true);
 
   const DECREMENT = 100;
   const REQUEST_TIMER = 15000;
@@ -96,9 +98,16 @@ const Solution = () => {
     }
   }, [requestStatus, timer]);
 
+  const handleCheckboxCheck = () => {
+    setUseBreakpoints(!breakpoints);
+  };
+
+  // Sample breakpoints for the progress bar
+  const breakpoints = useBreakpoints ? [1,2,3,4,5,6,7,8,9,10,20,50,60,75,80,85,90,91,92,100] : null;
+
   return (
-    <div>
-      <ProgressBar requestStatus={requestStatus} percentageFilled={percentageFilled()} />
+    <div className="canvas">
+      <ProgressBar requestStatus={requestStatus} percentageFilled={percentageFilled()} breakpoints={breakpoints}/>
       <Button
         callback={() => handleStartClick()}
         className={`canvas__button canvas__request-button canvas__request-button--${requestStatus}`}
@@ -111,6 +120,15 @@ const Solution = () => {
           label="Finish Request"
         />
       }
+      <label>
+        Use Breakpoints
+      <input
+        className="canvas__checkbox"
+        checked={useBreakpoints}
+        onChange={() => handleCheckboxCheck()}
+        type="checkbox"
+      />
+      </label>
     </div>
   );
 };
