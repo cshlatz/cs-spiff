@@ -1,0 +1,16 @@
+.canvas__progress-indicator {
+  background: linear-gradient(to right, orange, red);
+  height: 6px;
+  &.canvas__progress-indicator--active {
+    transition: width .25s;
+  }
+  &.canvas__progress-indicator--finished {
+    width: 100%;
+    transition: width 1s;
+  }
+  &.canvas__progress-indicator--inactive {
+    opacity: 0;
+    transition: opacity 2s ease;
+    transition-delay: 0s;
+  }
+}

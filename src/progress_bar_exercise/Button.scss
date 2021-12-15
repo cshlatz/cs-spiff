@@ -1,0 +1,34 @@
+$spiff-color: #1dc0a6; // Thank you, GIMP color picker
+$finish-color: red;
+
+.canvas__button {
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  height: 40px; // Downloaded the image into GIMP and measured it there, hope it's right
+  width: 162px;
+
+  &.canvas__request-button {
+    border-color: $spiff-color;
+    color: $spiff-color;
+    &.canvas__request-button--inactive, &.canvas__request-button--finished {
+      border: 1px solid;
+      // Shouldn't go back to 2 px if you hover while progress bar is loading
+      &:hover {
+        border: 2px solid;
+      }
+    }
+
+    &.canvas__request-button--active, &.canvas__request-button--starting, &.canvas__request-button--stalled {
+      border: 3px solid;
+    }
+  }
+
+  &.canvas__finish-button {
+    border-color: $finish-color;
+    color: $finish-color;
+    border: 3px solid;
+  }
+}
