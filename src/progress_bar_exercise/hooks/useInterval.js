@@ -5,7 +5,7 @@
   * My favorite hook that I've written has been one that tracks impressions.
 **/
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const useInterval = (callback, delay) => {
   const refCallback = useRef();
