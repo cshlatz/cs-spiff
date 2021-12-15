@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./ProgressBar.scss";
 
 import { calculateWidthByBreakpoints } from './utils/progressBarUtils';
@@ -16,5 +17,11 @@ const ProgressBar = ({ requestStatus, percentageFilled, breakpoints }) => {
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  requestStatus: PropTypes.string.isRequired,
+  percentageFilled: PropTypes.number.isRequired,
+  breakpoints: PropTypes.arrayOf(PropTypes.number)
+};
 
 export default ProgressBar;
