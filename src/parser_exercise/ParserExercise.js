@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Exercise from "../exercise/Exercise";
+import Button from "./Button";
+import { parse } from './utils/parseUtils';
+import "./ParserExercise.scss";
 
 const ParserExercise = () => {
   return (
@@ -18,5 +21,44 @@ export default ParserExercise;
 // ----------------------------------------------------------------------------------
 
 const Solution = () => {
-  return <div>Add solution here</div>;
+  const [phrase, setPhrase] = useState("");
+  const [count, setCount] = useState({});
+
+  const handleParseClick = () => {
+    setCount(parse(phrase));
+  };
+
+  const resetTextArea = () => {
+    setPhrase("");
+  };
+
+  const characterCounts = () => {
+    let output = [];
+    for (const character in count) {
+      output.push(
+        <div className="canvas__character">
+          <span className="canvas__character-key">{`${character}:`}</span>
+          <span className="canvas__character-count">{`${count[character]}`}</span>
+        </div>
+      );
+    }
+
+    return output;
+  };
+
+  return (
+    <div className="canvas">
+        <div className="canvas__text-input">
+          <label for="canvas__textarea">Phrase</label>
+          <textarea
+            onChange={e => setPhrase(e.target.value)}
+            name="canvas__textarea"
+            value={phrase}
+          />
+        </div>
+        <Button callback={() => handleParseClick()} label="Parse" className="canvas__button canvas__parse-button" />
+        <Button callback={() => resetTextArea()} label="Reset" className="canvas__button canvas__reset-button" />
+        {characterCounts()}
+    </div>
+  )
 };
