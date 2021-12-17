@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Exercise from "../exercise/Exercise";
 import Button from "./Button";
 import { parse } from './utils/parseUtils';
@@ -23,6 +23,7 @@ export default ParserExercise;
 const Solution = () => {
   const [phrase, setPhrase] = useState("");
   const [count, setCount] = useState({});
+  const [selectedCharacter, setSelectedCharacter] = useState("");
 
   // Parses the text area
   const handleParseClick = () => {
@@ -33,6 +34,11 @@ const Solution = () => {
   const resetTextArea = () => {
     setPhrase("");
     setCount({});
+    setSelectedCharacter("");
+  };
+
+  const handleCharacterClick = (character) => {
+    setSelectedCharacter(character);
   };
 
   // Will output on rerender (state change);
@@ -40,7 +46,7 @@ const Solution = () => {
     let output = [];
     for (const character in count) {
       output.push(
-        <div className="canvas__character">
+        <div onClick={() => handleCharacterClick(character)} className="canvas__character">
           <span className="canvas__character-key">{`${character}:`}</span>
           <span className="canvas__character-count">{`${count[character]}`}</span>
         </div>
@@ -60,6 +66,13 @@ const Solution = () => {
             value={phrase}
           />
         </div>
+        {selectedCharacter && phrase &&
+            <div 
+              className="canvas__highlighted-text"
+              // Aaaaack
+              dangerouslySetInnerHTML={{__html: phrase.replaceAll(selectedCharacter, '<span class="highlight">' + selectedCharacter + '</span>')}}
+            />
+        }
         <Button callback={() => handleParseClick()} label="Parse" className="canvas__button canvas__parse-button" />
         <Button callback={() => resetTextArea()} label="Reset" className="canvas__button canvas__reset-button" />
         {characterCounts()}

@@ -5,8 +5,7 @@ describe('parse', () => {
     const phrase = "The quick brown fox jumps over the lazy dog";
     expect(parse(phrase)).toStrictEqual(
     {
-      " ": 8,
-      "T": 1,
+      "t": 2,
       "a": 1,
       "b": 1,
       "c": 1,
@@ -26,7 +25,6 @@ describe('parse', () => {
       "q": 1,
       "r": 2,
       "s": 1,
-      "t": 1,
       "u": 2,
       "v": 1,
       "w": 1,
