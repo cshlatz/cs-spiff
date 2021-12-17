@@ -32,6 +32,7 @@ const Solution = () => {
   // Resets the text area state
   const resetTextArea = () => {
     setPhrase("");
+    setCount({});
   };
 
   // Will output on rerender (state change);
