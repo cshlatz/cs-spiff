@@ -24,14 +24,17 @@ const Solution = () => {
   const [phrase, setPhrase] = useState("");
   const [count, setCount] = useState({});
 
+  // Parses the text area
   const handleParseClick = () => {
     setCount(parse(phrase));
   };
 
+  // Resets the text area state
   const resetTextArea = () => {
     setPhrase("");
   };
 
+  // Will output on rerender (state change);
   const characterCounts = () => {
     let output = [];
     for (const character in count) {
