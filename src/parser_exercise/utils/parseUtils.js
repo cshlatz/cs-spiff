@@ -10,7 +10,14 @@ const parse = (phrase) => {
 
   let count = {};
 
+  // Make everything lower case
+  phrase = phrase.toLowerCase();
+
   for (const character of phrase) {
+    // Skip spaces
+    if (character === ' ') {
+      continue;
+    }
     if (count[character]) {
       count[character]++;
     } else {
