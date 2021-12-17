@@ -1,0 +1,30 @@
+.canvas {
+    background-color: #f6f9fb;
+    display: flex;
+    flex-direction: column;
+}
+
+.canvas__character {
+    & .canvas__character-key {
+        font-weight: bold;
+        width: 50px;
+        margin-right: 2px;
+        text-align: center;
+    }
+}
+
+label, textarea {
+    border-radius: 3px;
+    font-size: .9em;
+}
+
+textarea {
+    padding: 10px;
+    max-width: 100%;
+}
+
+label {
+    color: #8895a5;
+    display: block;
+    margin-bottom: 10px;
+}

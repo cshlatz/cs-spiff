@@ -1,0 +1,23 @@
+$spiff-color: #1dc0a6; // Thank you, GIMP color picker
+$reset-color: orange;
+
+.canvas__button {
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: .8em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  height: 40px; // Downloaded the image into GIMP and measured it there, hope it's right
+  width: 162px;
+  border: 1px solid;
+
+  &.canvas__parse-button {
+    border-color: $spiff-color;
+    color: $spiff-color;
+  }
+
+  &.canvas__reset-button {
+    border-color: $reset-color;
+    color: $reset-color;
+  }
+}
